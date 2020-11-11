@@ -1,0 +1,44 @@
+<%- include('../header') %>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">All Calls</h1>
+    <% if (logs.length == 0) {%>
+    <p>No calls yet</p>
+    <% }else {%>
+    <p>Below is the list of all calls</p>
+    <% }%>
+  </div>
+</div>
+<div class="container">
+  <table class="table">
+    <thead></thead>
+    <tbody>
+      <% logs.forEach((log) => { %>
+
+      <tr>
+        <% if (log.type === "outgoing") {%>
+        <td><i style="color: green" class="fas fa-arrow-up"></i></td>
+        <% } else if (log.type === "incoming") { %>
+        <td><i style="color: green" class="fas fa-arrow-down"></i></td>
+        <% } else if (log.type === "missed") { %>
+        <td><i style="color: red" class="fas fa-arrow-down"></i></td>
+        <% } %> <% if (log.name === "") {%>
+        <td><%= log.contact%></td>
+        <% } else{ %>
+        <td><%= log.name%></td>
+        <% }%>
+
+        <td><%= log.duration%></td>
+
+        <% if (log.sim === "9568361163") {%>
+        <td><i class="fas fa-sim-card"></i>-2</td>
+        <% } else{ %>
+        <td><i class="fas fa-sim-card"></i>-1</td>
+        <% }%>
+
+        <td><%= log.createdAt.toString().substring(4,21)%></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

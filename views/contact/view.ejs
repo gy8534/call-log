@@ -1,0 +1,27 @@
+<%- include('../header') %>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">View Contacts</h1>
+  </div>
+</div>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Contact No.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% contacts.forEach((contact) => { %>
+      <tr>
+        <td><%= contact.name %></td>
+        <td><%= contact.contact %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <a href="/contacts/add" class="float">
+    <i class="fa fa-plus my-float"></i>
+  </a>
+</div>
